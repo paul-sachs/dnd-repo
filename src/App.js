@@ -15,7 +15,8 @@ const View = ({ text, children, id}) => <div id={id}>
 const source = {
   beginDrag(props) {
     return {
-      text: props.text
+      text: props.text,
+      id: props.id
     };
   }
 };
@@ -68,7 +69,7 @@ class App extends Component {
           </div>
           <div style={{ flex: '1 1 auto' }} id='drop-target'>
             <DroppableView text='Drop here!' onDrop={this.onDrop}>
-              {this.state.texts.map(item => <div>
+              {this.state.texts.map(item => <div className={`copy-of-${item.id}`}>
                 Dropped: {item.text}
               </div>)}
             </DroppableView>
